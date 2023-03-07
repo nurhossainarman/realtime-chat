@@ -6,31 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Time Chat</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/index.js"></script>
+    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script defer src="js/index.js"></script>
 </head>
 <body>
     <div class="justifyItems-Center">
     <div class="header">
         <img src="logo.png" alt="">
     </div>
+    <div class="a">
         <div class="container">
+            <div class="chatbox"> 
+            <div class="chat-text right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, suscipit. Quasi debitis beatae doloribus sed, eum quidem veritatis obcaecati sequi.</div>
             <div class="chat-text right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, suscipit. Quasi debitis beatae doloribus sed, eum quidem veritatis obcaecati sequi.</div>
             <div class="chat-text right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, suscipit. Quasi debitis beatae doloribus sed, eum quidem veritatis obcaecati sequi.</div>
             <div class="chat-text left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, suscipit. Quasi debitis beatae doloribus sed, eum quidem veritatis obcaecati sequi.</div>
             <div class="chat-text right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, suscipit. Quasi debitis beatae doloribus sed, eum quidem veritatis obcaecati sequi.</div>
-            <div class="chat-text right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, suscipit. Quasi debitis beatae doloribus sed, eum quidem veritatis obcaecati sequi.</div>
-            <div class="chat-text right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, suscipit. Quasi debitis beatae doloribus sed, eum quidem veritatis obcaecati sequi.</div>
-            <div class="chat-text right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, suscipit. Quasi debitis beatae doloribus sed, eum quidem veritatis obcaecati sequi.</div>
-           
-    </div>
-    </div>
-    <div class="justifyItems-Center mgtop">
+            </div>
+        </div>
         <form>
-            <input type="text">
-            <input type="submit" value="Send">
+                <input type="text">
+                <input type="submit" value="Send">
         </form>
-        
+    </div>  
+    
+    
     </div>
+       
     
     
 </body>

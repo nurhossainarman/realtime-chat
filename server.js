@@ -17,6 +17,13 @@ io.on('connection', socket => {
         socket.emit('user-connected', name);
         socket.broadcast.emit('other-user-join', name);
     })
+
+    socket.on('send-message', message => {
+        console.log(message);
+        socket.broadcast.emit('receive-message', message);
+    })
+
+    
 })
 
 const PORT = 3000 || process.env.PORT;

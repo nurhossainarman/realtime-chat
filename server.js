@@ -8,12 +8,15 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-//Set at static folder
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Run when client connects
 io.on('connection', socket => {
-    console.log('Client is connected');
+    socket.on('new-user', name => {
+        socket.emit('user-connected', name);
+        socket.broadcast.emit('other-user', name);
+    })
 })
 
 const PORT = 3000 || process.env.PORT;

@@ -88,3 +88,14 @@ body {
   margin-right: 10px;
   clear: both;
 }
+.center{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.joinText{
+    color : black;
+    background-color: darkgrey;
+    width: fit-content;
+    
+}

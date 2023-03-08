@@ -8,7 +8,6 @@ function appendInChatBox(text, position) {
     const d = document.createElement("div");
     d.innerHTML = text;
     d.classList.add("chat-text");
-    d.classList.add("right");
     d.classList.add(position);
     chatbox.appendChild(d);
 }
@@ -21,11 +20,19 @@ function join(text){
     c.appendChild(d);
     chatbox.appendChild(c);
 }
+//needs fix
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
     const text = document.getElementById("messageInp");
-    if(text.value != ""){
-        appendInChatBox(text.value);
+    const message = text.value
+    if(message != ""){
+        console.log("w");
+        socket.emit('send-message', message);
+        socket.on('receive-message', message=>{
+        console.log("x");
+        appendInChatBox(message, "left");
+        }) 
+        message= "";
         text.value= "";
     }
     
@@ -36,7 +43,8 @@ socket.emit('new-user', name);
 socket.on('user-connected', name => {
     join("You have joined the chat");
     socket.on('other-user-join', name => {
-        join(`${name} has joined`);
+    join(`${name} has joined`);
     });
 });
+
 

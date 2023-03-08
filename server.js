@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', socket => {
     socket.on('new-user', name => {
         socket.emit('user-connected', name);
-        socket.broadcast.emit('other-user', name);
+        socket.broadcast.emit('other-user-join', name);
     })
 })
 

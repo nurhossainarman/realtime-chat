@@ -35,7 +35,7 @@ const name = prompt("Username:");
 socket.emit('new-user', name);
 socket.on('user-connected', name => {
     join("You have joined the chat");
-    socket.on('other-user', name => {
+    socket.on('other-user-join', name => {
         join(`${name} has joined`);
     });
 });

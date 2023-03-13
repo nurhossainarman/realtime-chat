@@ -20,7 +20,6 @@ function join(text){
     c.appendChild(d);
     chatbox.appendChild(c);
 }
-//needs fix
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
     var text = document.getElementById("messageInp");
@@ -28,9 +27,8 @@ form.addEventListener("submit", (e)=>{
     if(message != ""){
         console.log("send");
         socket.emit('send-message', message);
-        counter= 0;
+       
     }
-    message= "";
     text.value= "";
     
     
@@ -49,7 +47,8 @@ socket.on('other-user-join', newuser => {
 socket.on('s-message', message=>{
     appendInChatBox(message, "right");
     })
+    
 socket.on('receive-message', message=>{
-    appendInChatBox(`${newuser}: ${message}`, "left");
+    appendInChatBox(message, "left");
     })
 

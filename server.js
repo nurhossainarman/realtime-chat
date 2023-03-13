@@ -13,13 +13,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Run when client connects
 io.on('connection', socket => {
-    socket.on('new-user', name => {
-        socket.emit('user-connected', name);
-        socket.broadcast.emit('other-user-join', name);
+    socket.on('new-user', newuser => {
+        socket.emit('user-connected', newuser);
+        socket.broadcast.emit('other-user-join', newuser);
     })
 
     socket.on('send-message', message => {
-        console.log(message);
+        socket.emit('s-message', message);
         socket.broadcast.emit('receive-message', message);
     })
 

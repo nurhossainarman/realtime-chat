@@ -2,7 +2,7 @@
 const socket = io()
 
 const form = document.querySelector(".sendMessage");
-const chatbox = document.querySelector(".chatbox");
+const chatbox = document.querySelector(".container"); 
 
 function appendInChatBox(text, position) {
     const d = document.createElement("div");
@@ -23,28 +23,33 @@ function join(text){
 //needs fix
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
-    const text = document.getElementById("messageInp");
-    const message = text.value
+    var text = document.getElementById("messageInp");
+    var message = text.value
     if(message != ""){
-        console.log("w");
+        console.log("send");
         socket.emit('send-message', message);
-        socket.on('receive-message', message=>{
-        console.log("x");
-        appendInChatBox(message, "left");
-        }) 
-        message= "";
-        text.value= "";
+        counter= 0;
     }
+    message= "";
+    text.value= "";
+    
     
 })
 
-const name = prompt("Username:");
-socket.emit('new-user', name);
-socket.on('user-connected', name => {
+const newuser = prompt("Username:");
+socket.emit('new-user', newuser);
+socket.on('user-connected', newuser => {
     join("You have joined the chat");
-    socket.on('other-user-join', name => {
-    join(`${name} has joined`);
-    });
 });
 
+socket.on('other-user-join', newuser => {
+    join(`${newuser} has joined`);
+    });
+
+socket.on('s-message', message=>{
+    appendInChatBox(message, "right");
+    })
+socket.on('receive-message', message=>{
+    appendInChatBox(`${newuser}: ${message}`, "left");
+    })
 

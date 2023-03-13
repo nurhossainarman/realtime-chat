@@ -76,12 +76,14 @@ body {
     padding: 5px 5px;
     background: #6dff8a;
     border-radius: 10px;
+   
 }
 
 .left{
    float: left;
    margin-left: 10px;
    clear: both;
+
 }
 .right{
   float: right;
@@ -92,6 +94,8 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    clear: both;
+    
 }
 .joinText{
     color : black;

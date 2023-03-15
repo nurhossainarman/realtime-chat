@@ -74,7 +74,7 @@ body {
     max-width: 200px;
     max-height: fit-content;
     padding: 5px 5px;
-    background: #6dff8a;
+    background: white;
     border-radius: 10px;
    
 }
@@ -100,6 +100,10 @@ body {
 .joinText{
     color : black;
     background-color: darkgrey;
-    width: fit-content;
+    width: fit-content; 
+}
+
+.username{
     
+    color: rgb(4, 149, 4);
 }

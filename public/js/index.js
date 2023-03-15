@@ -1,24 +1,18 @@
-
 const socket = io()
-
 const form = document.querySelector(".sendMessage");
-const chatbox = document.querySelector(".container"); 
-
+const container = document.querySelector(".container"); 
 function appendInChatBox(text, position) {
-    const d = document.createElement("div");
-    d.innerHTML = text;
-    d.classList.add("chat-text");
-    d.classList.add(position);
-    chatbox.appendChild(d);
+    const div = document.createElement("div");
+    div.innerText = text;
+    div.classList.add("chat-text");
+    div.classList.add(position);
+    container.appendChild(div);
 }
 function join(text){
     const c = document.createElement("div");
-    const d = document.createElement("div");
     c.classList.add("center");
-    d.classList.add("joinText");
-    d.innerHTML = text;
-    c.appendChild(d);
-    chatbox.appendChild(c);
+    c.innerHTML = `<div class="joinText">${text}</div>`
+    container.appendChild(c);
 }
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
@@ -27,15 +21,13 @@ form.addEventListener("submit", (e)=>{
     if(message != ""){
         console.log("send");
         socket.emit('send-message', message);
-       
     }
-    text.value= "";
-    
-    
+    text.value= ""; 
 })
 
 const newuser = prompt("Username:");
 socket.emit('new-user', newuser);
+
 socket.on('user-connected', newuser => {
     join("You have joined the chat");
 });
@@ -46,9 +38,11 @@ socket.on('other-user-join', newuser => {
 
 socket.on('s-message', message=>{
     appendInChatBox(message, "right");
+    container.scrollTop = container.scrollHeight;
     })
     
 socket.on('receive-message', message=>{
     appendInChatBox(message, "left");
+    container.scrollTop = container.scrollHeight;
     })
 

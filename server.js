@@ -22,7 +22,7 @@ io.on('connection', socket => {
         
         console.log(`${newuser} connected ${socket.id}`);
 
-        // This method is from ./utils/users.js. Pushing the new client/user into users array
+        // This method is from ./utils/users.js. Pushing the new user into usersList array
         joinUser(usersList, newuser, socket.id); 
 
         //Showing the list of users in console
@@ -36,11 +36,8 @@ io.on('connection', socket => {
     socket.on('send-message', message => {
         const user = getUserBySocketId(usersList, socket.id);
         const username = user.username
-        console.log(username)
         socket.emit('s-message', message);
         socket.broadcast.emit('receive-message', message, username);
-        
-
     })
 
     //Listens for event when a client disconnects
